@@ -1,11 +1,13 @@
 *.rbc
 capybara-*.html
+.env
 .rspec
 /log
 /tmp
-/db/*.sqlite3
+/db/schema.rb
 /public/system
 /coverage/
+/config/database.yml
 /spec/tmp
 **.orig
 rerun.txt
