@@ -1,0 +1,11 @@
+AllCops:
+  Exclude:
+    - bin/*
+    - vendor/**/*
+    - config/**/*
+    - db/schema.rb
+    - db/migrate/*
+    - Gemfile
+    - Gemfile.lock
+Documentation:
+  Enabled: false

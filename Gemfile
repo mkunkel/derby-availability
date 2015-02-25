@@ -19,7 +19,6 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'rspec-its'
-  gem 'rspec-rails', '3.2.0'
   gem 'rubocop'
 end
 
@@ -31,4 +30,5 @@ group :development, :test do
   gem 'faker'
   gem 'pry-nav'
   gem 'pry-rails'
+  gem 'rspec-rails', '3.2.0'
 end
