@@ -1,0 +1,21 @@
+generic: &generic
+  host: <%= ENV['DATABASE_HOST'] %>
+  port: <%= ENV['DATABASE_PORT'] %>
+  adapter: <%= ENV['DATABASE_ADAPTER'] %>
+  encoding: <%= ENV['DATABASE_ENCODING'] %>
+  pool: <%= ENV['DATABASE_POOL'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  template: <%= ENV['DATABASE_TEMPLATE'] %>
+
+development:
+  <<: *generic
+  database: <%= ENV['DATABASE_NAME'] %>
+
+test:
+  <<: *generic
+  database: <%= "#{ENV['DATABASE_NAME']}_test" %>
+
+production:
+  <<: *generic
+  database: <%= ENV['DATABASE_NAME'] %>

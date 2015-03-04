@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
-gem 'dotenv'
+gem 'dotenv-rails'
 gem 'jquery-rails'
 gem 'pg'
 gem 'rails', '4.2.0'
