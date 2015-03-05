@@ -20,6 +20,7 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
+require 'pry'
 
 ActiveRecord::Migration.maintain_test_schema!
 
