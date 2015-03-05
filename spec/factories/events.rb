@@ -5,7 +5,7 @@ FactoryGirl.define do
     end_date '2015-03-04'
     start_time '2015-03-04 17:55:45'
     end_time '2015-03-04 17:55:45'
-    type ''
+    event_type 'Scrimmage'
     details 'MyText'
   end
 end

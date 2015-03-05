@@ -1,19 +1,29 @@
 require 'spec_helper'
 
 describe EventsController do
+  let(:event) { FactoryGirl.create(:event) }
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    {
+      location: 'MyText',
+      start_date: '2015-03-04',
+      end_date: '2015-03-04',
+      start_time: '2015-03-04 17:55:45',
+      end_time: '2015-03-04 17:55:45',
+      event_type: 'Scrimmage',
+      details: 'MyText'
+    }
   end
-
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    {
+      event_type: '',
+      details: 'MyText'
+    }
   end
 
   let(:valid_session) { {} }
 
   describe 'GET #index' do
     it 'assigns all events as @events' do
-      event = Event.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:events)).to eq([event])
     end
@@ -21,7 +31,6 @@ describe EventsController do
 
   describe 'GET #show' do
     it 'assigns the requested event as @event' do
-      event = Event.create! valid_attributes
       get :show, { id: event.to_param }, valid_session
       expect(assigns(:event)).to eq(event)
     end
@@ -36,7 +45,6 @@ describe EventsController do
 
   describe 'GET #edit' do
     it 'assigns the requested event as @event' do
-      event = Event.create! valid_attributes
       get :edit, { id: event.to_param }, valid_session
       expect(assigns(:event)).to eq(event)
     end
@@ -82,7 +90,6 @@ describe EventsController do
       end
 
       it 'updates the requested event' do
-        event = Event.create! valid_attributes
         put :update,
             { id: event.to_param, event: new_attributes },
             valid_session
@@ -91,7 +98,6 @@ describe EventsController do
       end
 
       it 'assigns the requested event as @event' do
-        event = Event.create! valid_attributes
         put :update,
             { id: event.to_param, event: valid_attributes },
             valid_session
@@ -99,7 +105,6 @@ describe EventsController do
       end
 
       it 'redirects to the event' do
-        event = Event.create! valid_attributes
         put :update,
             { id: event.to_param, event: valid_attributes },
             valid_session
@@ -109,7 +114,6 @@ describe EventsController do
 
     context 'with invalid params' do
       it 'assigns the event as @event' do
-        event = Event.create! valid_attributes
         put :update,
             { id: event.to_param, event: invalid_attributes },
             valid_session
@@ -117,7 +121,6 @@ describe EventsController do
       end
 
       it "re-renders the 'edit' template" do
-        event = Event.create! valid_attributes
         put :update,
             { id: event.to_param, event: invalid_attributes },
             valid_session
@@ -127,15 +130,16 @@ describe EventsController do
   end
 
   describe 'DELETE #destroy' do
+    # event is lazy loaded, force it to be saved
+    before { event }
+
     it 'destroys the requested event' do
-      event = Event.create! valid_attributes
       expect do
-        delete :destroy, { id: event.to_param }, valid_session
+        delete :destroy, { id: event.id }, valid_session
       end.to change(Event, :count).by(-1)
     end
 
     it 'redirects to the events list' do
-      event = Event.create! valid_attributes
       delete :destroy, { id: event.to_param }, valid_session
       expect(response).to redirect_to(events_url)
     end
