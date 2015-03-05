@@ -1,0 +1,9 @@
+FactoryGirl.define do
+  factory :setting do
+    user_id 1
+    share_email false
+    share_phone_number false
+    share_resume_url false
+    share_profile false
+  end
+end
