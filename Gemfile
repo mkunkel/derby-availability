@@ -20,6 +20,7 @@ group :test do
   gem 'database_cleaner'
   gem 'rspec-its'
   gem 'rubocop'
+  gem 'shoulda-matchers'
 end
 
 group :development, :test do
