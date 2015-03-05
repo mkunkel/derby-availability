@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :setting do
+  factory :configuration do
     user_id 1
     share_email false
     share_phone_number false

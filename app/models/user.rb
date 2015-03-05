@@ -5,6 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :events, through: :events_users
-  has_one :settings
+  has_one :configuration
   has_one :profile
 end
