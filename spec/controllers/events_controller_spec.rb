@@ -86,7 +86,10 @@ describe EventsController do
   describe 'PUT #update' do
     context 'with valid params' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        {
+          event_type: 'Game',
+          details: 'Some details'
+        }
       end
 
       it 'updates the requested event' do
@@ -94,7 +97,8 @@ describe EventsController do
             { id: event.to_param, event: new_attributes },
             valid_session
         event.reload
-        skip('Add assertions for updated state')
+        expect(event.event_type).to eql('Game')
+        expect(event.details).to eql('Some details')
       end
 
       it 'assigns the requested event as @event' do
