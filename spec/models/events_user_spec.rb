@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-RSpec.describe EventsUser, type: :model do
+describe EventsUser do
   pending "add some examples to (or delete) #{__FILE__}"
 end

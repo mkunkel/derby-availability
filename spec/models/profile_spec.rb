@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-RSpec.describe Profile, type: :model do
+describe Profile do
   pending "add some examples to (or delete) #{__FILE__}"
 end
