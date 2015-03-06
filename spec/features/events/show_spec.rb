@@ -15,4 +15,12 @@ describe 'Events index' do
     it { is_expected.to have_content event.location }
     it { is_expected.to have_content event.details }
   end
+
+  context 'not signed in' do
+    before { visit event_path(event) }
+
+    it 'should require login' do
+      expect(current_path).to eql(new_user_session_path)
+    end
+  end
 end

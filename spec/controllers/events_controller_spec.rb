@@ -20,6 +20,8 @@ describe EventsController do
 
   let(:valid_session) { {} }
 
+  before { allow(controller).to receive(:require_sign_in).and_return(nil) }
+
   describe 'GET #index' do
     it 'assigns all events as @events' do
       get :index, {}, valid_session
