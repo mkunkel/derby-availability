@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Event do
   let(:event) { FactoryGirl.build(:event) }
   subject { event }

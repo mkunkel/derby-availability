@@ -1,4 +1,3 @@
-require 'spec_helper'
 include AuthenticationHelper
 
 describe 'Events index' do

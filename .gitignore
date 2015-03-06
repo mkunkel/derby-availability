@@ -1,7 +1,6 @@
 *.rbc
 capybara-*.html
 .env
-.rspec
 /log
 /tmp
 /db/schema.rb

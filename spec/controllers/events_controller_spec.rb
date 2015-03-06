@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe EventsController do
   let(:event) { FactoryGirl.create(:event) }
   let(:valid_attributes) do
