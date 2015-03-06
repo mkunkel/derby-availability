@@ -1,11 +1,12 @@
 FactoryGirl.define do
   factory :event do
-    location 'MyText'
-    start_date '2015-03-04'
-    end_date '2015-03-04'
-    start_time '2015-03-04 17:55:45'
-    end_time '2015-03-04 17:55:45'
-    event_type 'Scrimmage'
-    details 'MyText'
+    location Faker::Address.city
+    start_date Faker::Date.forward(3)
+    end_date Faker::Date.forward(10)
+    start_time Faker::Time.forward(3, :morning)
+    end_time Faker::Time.forward(10, :evening)
+    event_type ['Scrimmage', 'Sanctioned Game', 'Regulation Game',
+                'Exhibition Game', 'Intraleague Game', 'Doubleheader'].sample
+    details Faker::Hacker.say_something_smart
   end
 end
