@@ -1,0 +1,7 @@
+h1 Upcoming events
+
+-if @events.count == 0
+  h4 No events found
+-else
+  - @events.each do |event|
+    = render partial:'event', locals: { event: event }
