@@ -8,11 +8,11 @@ html
     = csrf_meta_tags
   body
     - if notice
-      - notice.each do |notice_msg|
+      - notice.count.times do
         p.notice
-          = notice_msg
+          = notice.pop
     - if alert
-      - alert.each do |alert_msg|
+      - alert.count.times do
         p.alert
-          = alert_msg
+          = alert.pop
     = yield

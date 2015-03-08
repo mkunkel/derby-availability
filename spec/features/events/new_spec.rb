@@ -12,6 +12,10 @@ describe 'Events new' do
 
     subject { page }
 
+    it 'should not show an error' do
+      expect(subject).not_to have_content('You must be logged in to do that.')
+    end
+
     it 'should create a new event' do
       # No reason not to expect this, but lets be sure
       expect(Event.count).to eql(0)

@@ -12,6 +12,10 @@ describe 'Events index' do
 
     subject { page }
 
+    it 'should not show an error' do
+      expect(subject).not_to have_content('You must be logged in to do that.')
+    end
+
     it { is_expected.to have_content event.location }
     it { is_expected.to have_content event.details }
   end

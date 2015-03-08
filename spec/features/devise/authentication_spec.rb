@@ -32,6 +32,10 @@ describe 'user authentication' do
       it 'should redirect user to the events index from the root path' do
         expect(current_path).to eql(events_path)
       end
+
+      it 'should not show an error' do
+        expect(subject).not_to have_content('You must be logged in to do that.')
+      end
     end
 
     context 'unconfirmed user' do
