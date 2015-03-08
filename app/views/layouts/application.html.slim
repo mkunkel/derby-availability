@@ -7,8 +7,12 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    p.notice
-      = notice
-    p.alert
-      = alert
+    - if notice
+      - notice.each do |notice_msg|
+        p.notice
+          = notice_msg
+    - if alert
+      - alert.each do |alert_msg|
+        p.alert
+          = alert_msg
     = yield

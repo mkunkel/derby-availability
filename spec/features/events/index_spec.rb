@@ -3,7 +3,7 @@ include AuthenticationHelper
 describe 'Events index' do
   let(:user) { FactoryGirl.create(:user) }
 
-  context 'signed in' do
+  context 'confirmed and signed in' do
     before do
       confirm_and_sign_in user
       visit events_path
@@ -29,6 +29,10 @@ describe 'Events index' do
 
     it 'should require login' do
       expect(current_path).to eql(new_user_session_path)
+    end
+
+    it 'should tell the user they must be logged in' do
+      expect(page).to have_content('You must be logged in to do that.')
     end
   end
 end
