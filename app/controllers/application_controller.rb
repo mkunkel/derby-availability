@@ -25,8 +25,9 @@ class ApplicationController < ActionController::Base
   end
 
   def require_sign_in
-    add_flash(:alert, 'You must be logged in to do that.')
+    return if user_signed_in?
 
-    return redirect_to new_user_session_path unless user_signed_in?
+    add_flash(:alert, 'You must be logged in to do that.')
+    redirect_to new_user_session_path
   end
 end
