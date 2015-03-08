@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   # GET /events
   def index
-    @events = Event.all
+    @events = Event.where('end_date > ?', Time.now).order(start_date: :asc)
   end
 
   # GET /events/1
