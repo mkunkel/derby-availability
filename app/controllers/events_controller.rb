@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :rsvp]
 
   # GET /events
   def index
@@ -45,7 +45,24 @@ class EventsController < ApplicationController
     redirect_to events_url, notice: 'Event was successfully destroyed.'
   end
 
+  # GET /events/1/rsvp
+  def rsvp
+    if event_params && event_params[:answer] && save_rsvp
+      redirect_to event_path(@event), notice: 'Successfully responded ' \
+        "#{event_params[:answer]} for this event"
+    else
+      redirect_to event_path(@event),
+                  alert: 'Unable to save response'
+    end
+  end
+
   private
+
+  def save_rsvp
+    return false unless %w(Yes No Maybe).include? event_params[:answer]
+    current_user.events_users
+      .create(event: @event, answer: event_params[:answer])
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_event
@@ -54,7 +71,9 @@ class EventsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def event_params
+    return false unless params[:event]
     params.require(:event).permit(:location, :start_date, :end_date,
-                                  :start_time, :end_time, :event_type, :details)
+                                  :start_time, :end_time, :event_type, :details,
+                                  :answer)
   end
 end
